@@ -67,9 +67,15 @@ function hello() {
     console.log('hello!')
 }
 
+/**
+ * prints "hello is for greeting the user, quit and exitto quit the application, help to list the commandsS"
+ * @returns {void}
+ */
 function help() {
-    console.log('hello is for greeting the user, quit and exitto quit the application, help to list the commandsS')
+    console.log('hello is for greeting the user, quit and exitto quit the application, help to list the commands')
 }
+
+
 
 
 /**
