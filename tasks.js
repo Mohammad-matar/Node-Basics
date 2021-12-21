@@ -37,10 +37,13 @@ function onDataReceived(text) {
         quit();
     } else if (text === 'hello\n') {
         hello();
-    } else {
-        unknownCommand(text);
-    }
+    } else if (text === 'help\n') {
+        help();
+    } else unknownCommand(text);
+
 }
+
+
 
 
 /**
@@ -62,6 +65,10 @@ function unknownCommand(c) {
  */
 function hello() {
     console.log('hello!')
+}
+
+function help() {
+    console.log('hello is for greeting the user, quit and exitto quit the application, help to list the commandsS')
 }
 
 
