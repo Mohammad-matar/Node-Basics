@@ -1,3 +1,5 @@
+const commandList = ["hello", "help", "exits"];
+const tasks = ["codi", "coding", "exits"];
 /**
  * Starts the application
  * This is the function that is run when the app starts
@@ -35,10 +37,13 @@ function startApp(name) {
 function onDataReceived(text) {
     if (text === 'quit\n' || text === 'exit\n') {
         quit();
-    } else if (text === 'hello\n') {
-        hello();
+    } else if (text.startsWith(`hello`)) {
+        hello(text.trim());
     } else if (text === 'help\n') {
         help();
+    } else if (text === 'list\n') {
+        list();
+
     } else unknownCommand(text);
 
 }
@@ -55,6 +60,7 @@ function onDataReceived(text) {
  */
 function unknownCommand(c) {
     console.log('unknown command: "' + c.trim() + '"')
+
 }
 
 
@@ -63,16 +69,36 @@ function unknownCommand(c) {
  *
  * @returns {void}
  */
-function hello() {
-    console.log('hello!')
+function hello(txt) {
+    txt = txt.replace(`hello`, ``);
+    console.log('hello' + txt + "!");
 }
 
-/**
+/**     
  * prints "hello is for greeting the user, quit and exitto quit the application, help to list the commandsS"
  * @returns {void}
  */
 function help() {
-    console.log('hello is for greeting the user, quit and exitto quit the application, help to list the commands')
+    // for (let i = 0; i < commandlist.length; i++) {
+    //     console.log(commandlist(i));
+
+
+    // }
+
+
+    commandList.forEach((element, index) => {
+        console.log(element);
+    });
+
+}
+
+function list() {
+    tasks.forEach(
+        (element, index) => {
+            console.log(index + 1 + "-" + element)
+        }
+    )
+
 }
 
 
