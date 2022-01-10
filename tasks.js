@@ -44,11 +44,35 @@ function onDataReceived(text) {
     } else if (text === 'list\n') {
         list();
 
+    } else if (text.startsWith(`add`)) {
+        add(text.trim());
+    } else if (text.startsWith(`remove`)) {
+        remove(text.trim());
     } else unknownCommand(text);
 
 }
 
+function remove(text) {
+    var splitText = text.split("remove ")
+        // console.log(splitText);
+    if (splitText.length > 1) {
+        if (!isNaN(splitText[1])) {
+            if (parseInt(splitText) < tasks.length) {
+                let index = parseInt(splitText[1]);
+                tasks.splice((index - 1), 1);
+                list();
+            } else {
+                console.log("enter an exist number of task")
+            }
 
+        } else {
+            console.log("enter a number");
+        }
+    } else {
+        console.log("enter the number of the task")
+    }
+
+}
 
 
 /**
@@ -101,7 +125,15 @@ function list() {
 
 }
 
-
+function add(task) {
+    var tasksplit = task.split(`add `);
+    if (tasksplit.length > 1) {
+        tasks.push(tasksplit[1]);
+        list();
+    } else {
+        console.log(`error`)
+    }
+}
 
 
 /**
